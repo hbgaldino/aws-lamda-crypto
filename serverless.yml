@@ -1,0 +1,23 @@
+service: aws-crypto
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: test
+  region: sa-east-1
+  
+functions:
+  encrypt:
+    name: encrypt-function
+    handler: handler.encrypt
+    events:
+     - http:
+        path: encrypt
+        method: post
+  decrypt:
+    name: decrypt-function
+    handler: handler.decrypt
+    events:
+     - http:
+        path: decrypt
+        method: post
